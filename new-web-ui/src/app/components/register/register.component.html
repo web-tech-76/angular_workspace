@@ -1,13 +1,13 @@
 <div class="row-cols-2 mt-4">
   <div class="col-4 mt-2">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div class="col-4 mt-2">
+      <div class="col-lg-6 mt-2">
         <input required type="text"
                placeholder="username"
                class="form-control"
                formControlName="username" />
       </div>
-      <div class="col-4 mt-2">
+      <div class="col-lg-6 mt-2">
         <input required
                class="form-control"
                type="email"
@@ -15,13 +15,13 @@
                formControlName="email" />
       </div>
 
-      <div class="col-4 mt-2">
+      <div class="col-lg-6 mt-2">
         <input required type="password"
                placeholder="password"
                class="form-control"
                formControlName="password" />
       </div>
-      <div class="col-2 mt-2">
+      <div class="col-lg-6 mt-2">
         <button class="btn btn-primary" type="submit">Register</button>
       </div>
     </form>

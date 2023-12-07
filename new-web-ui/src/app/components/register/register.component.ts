@@ -1,7 +1,9 @@
-import {Component, inject, OnDestroy} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {UserInterface} from "../../model/login/user.interface";
 import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {RegisterService} from "../../services/register/register.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -15,7 +17,9 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 export class RegisterComponent {
   http = inject(HttpClient);
   fb = inject(FormBuilder);
-  //subscription =signal<Subscription|undefined>(undefined);
+  //subscription = signal<Subscription|undefined>(undefined);
+  registerService = inject(RegisterService);
+  router = inject(Router);
 
   form = this.fb.nonNullable.group({
     username: ['', Validators.required],
@@ -27,7 +31,10 @@ export class RegisterComponent {
     this.http.post<{ user: UserInterface }>("https://api.realworld.io/api/users",
       {user: this.form.getRawValue()})
       .subscribe(response => {
-        console.log(response);
+        //console.log(response);
+        localStorage.setItem('token', response.user.token);
+        this.registerService.usersSignal.set(response.user);
+        this.router.navigateByUrl("/exam");
       });
   }
 }
