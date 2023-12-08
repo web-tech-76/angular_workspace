@@ -15,11 +15,11 @@ import {Router} from "@angular/router";
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  http = inject(HttpClient);
   fb = inject(FormBuilder);
   //subscription = signal<Subscription|undefined>(undefined);
   registerService = inject(RegisterService);
   router = inject(Router);
+  http = inject(HttpClient);
 
   form = this.fb.nonNullable.group({
     username: ['', Validators.required],

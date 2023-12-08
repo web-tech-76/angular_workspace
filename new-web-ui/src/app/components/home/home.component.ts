@@ -1,6 +1,7 @@
-import {Component, Inject} from '@angular/core';
+import {Component, inject, Inject} from '@angular/core';
 import {RegisterComponent} from "../register/register.component";
 import {Router, RouterModule} from "@angular/router";
+import {RegisterService} from "../../services/register/register.service";
 
 @Component({
   selector: 'app-home',
@@ -13,16 +14,10 @@ import {Router, RouterModule} from "@angular/router";
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-
+  authService = inject(RegisterService);
   router = Inject(Router);
 
-  onRegister(){
-    this.router.navigate(["/register"] );
-  }
 
-  onLogin(){
-    this.router.navigate(["/login"]);
-  }
 
 
 }

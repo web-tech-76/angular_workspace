@@ -2,10 +2,10 @@
   <div class="col-4 mt-2">
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <div class="col-lg-6 mt-2">
-        <input required type="text"
-               placeholder="username"
+        <input required type="email"
+               placeholder="email"
                class="form-control"
-               formControlName="username">
+               formControlName="email">
       </div>
       <div class="col-lg-6 mt-2">
         <input required type="password"
